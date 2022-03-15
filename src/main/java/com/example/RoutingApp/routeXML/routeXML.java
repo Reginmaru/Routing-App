@@ -5,7 +5,7 @@ import com.example.RoutingApp.link.*;
 import com.example.RoutingApp.node.*;
 public class routeXML {
     private ArrayList<node> nodes;
-    private ArrayList<link> links;
+    private static ArrayList<link> links;
 
     public ArrayList<node> getNodes() {
         return nodes;
@@ -17,6 +17,6 @@ public class routeXML {
         this.nodes = nodes;
     }
     public void setLinks(ArrayList<link> links) {
-        this.links = links;
+         this.links = links;
     }
 }
