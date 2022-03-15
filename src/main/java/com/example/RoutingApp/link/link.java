@@ -2,17 +2,17 @@ package com.example.RoutingApp.link;
 
 public class link {
     private Long id;
-    private link.getName() startingNode;
-    private link.getName() endingNode;
+    private String startingNode;
+    private String endingNode;
     private Double weight;
 
     public Long getId() {
         return id;
     }
-    public link.getName() getStartingNode() {
+    public String getStartingNode() {
         return startingNode;
     }
-    public link.getName() getEndingNode() {
+    public String getEndingNode() {
         return endingNode;
     }
     public Double getWeight() {
@@ -21,11 +21,13 @@ public class link {
     public void setId(Long id) {
         this.id = id;
     }
-    public void setStartingNode() {
+    public void setStartingNode(String startingNode) {
         this.startingNode = startingNode;
     }
-    public void setEndingNode() {
+    public void setEndingNode(String endingNode) {
         this.endingNode = endingNode;
     }
+    
+    
     
 }
