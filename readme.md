@@ -7,3 +7,4 @@ v0.0
 v0.01
 
 1. created both the link and node classes. At first I tried using node.Name() as a return value but I didn't want to mess with the code at this point. I kept them as String and I will add exceptions to routeXML if they don't exist.
+2. Added routeXML class basics.
