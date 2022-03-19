@@ -1,6 +1,20 @@
 package com.example.RoutingApp.link;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 public class link {
+    @Id
+    @SequenceGenerator(
+        name = "link_sequence",
+        sequenceName = "link_sequence",
+        allocationSize = 1
+    )
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE,
+        generator = "link_sequence"
+    )
     private Long id;
     private String startingNode;
     private String endingNode;
@@ -27,7 +41,23 @@ public class link {
     public void setEndingNode(String endingNode) {
         this.endingNode = endingNode;
     }
-    
-    
-    
+    public link(String startingNode,
+                    String endingNode,
+                    Double weight)
+                    {
+                        this.startingNode = startingNode;
+                        this.endingNode = endingNode;
+                        this.weight = weight;
+                    }
+    public link(    Long id,
+                    String startingNode,
+                    String endingNode,
+                    Double weight)
+                    {
+                        this.id = id;
+                        this.startingNode = startingNode;
+                        this.endingNode = endingNode;
+                        this.weight = weight;
+                    }
+
 }

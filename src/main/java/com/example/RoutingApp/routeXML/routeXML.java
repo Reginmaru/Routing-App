@@ -1,22 +1,43 @@
 package com.example.RoutingApp.routeXML;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.*;
+
 import com.example.RoutingApp.link.*;
 import com.example.RoutingApp.node.*;
-public class routeXML {
-    private ArrayList<node> nodes;
-    private static ArrayList<link> links;
 
-    public ArrayList<node> getNodes() {
+@Entity
+@Table
+public class routeXML {
+    @Id
+    @SequenceGenerator(
+        name = "routeXML_sequence",
+        sequenceName = "routeXML_sequence",
+        allocationSize = 1
+    )
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE,
+        generator = "routeXML_sequence"
+    )
+    private int id;
+    @OneToMany(targetEntity = node.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "routeId", referencedColumnName = "id")
+    private List<node> nodes;
+    @OneToMany(targetEntity = link.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "routeId", referencedColumnName = "id")
+    private List<link> links;
+
+    public List<node> getNodes() {
         return nodes;
     }
-    public ArrayList<link> getLinks() {
+    public List<link> getLinks() {
         return links;
     }
-    public void setNodes(ArrayList<node> nodes) {
+    public void setNodes(List<node> nodes) {
         this.nodes = nodes;
     }
-    public void setLinks(ArrayList<link> links) {
+    public void setLinks(List<link> links) {
          this.links = links;
     }
 }
