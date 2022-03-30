@@ -1,14 +1,21 @@
 package com.example.RoutingApp.node;
 import java.util.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class nodeService {
-    public List<node> getNodes() {
-		return Arrays.asList(
-			new node(1L, "1", 1.0, 1.0)
-		);
+
+	private nodeRepository noderepository;
+
+	@Autowired
+	public nodeService(nodeRepository noderepository) {
+		this.noderepository = noderepository;
 	}
-    // I need to change this to an xml file.
+
+    public List<node> getNodes() {	
+		return noderepository.findAll();
+	}
+    
 }

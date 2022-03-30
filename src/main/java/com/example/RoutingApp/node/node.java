@@ -5,10 +5,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.persistence.GeneratedValue;
 
 @Entity
 @Table
+@XmlRootElement
 public class node {
     @Id
     @SequenceGenerator(
@@ -66,13 +68,11 @@ public class node {
                         this.x = x;
                         this.y = y;
                     }
+    public node(){
+
+    }
     @Override
     public String toString(){
-        return "node{" +
-        "id=" + id +
-        ", name = '" + name + '\'' +
-        "x =" + x +
-        "y =" + y +
-        '}';
+        return "name" + getName();
     }
 }

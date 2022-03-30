@@ -1,9 +1,11 @@
 package com.example.RoutingApp.link;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table
+@XmlRootElement
 public class link {
     @Id
     @SequenceGenerator(
@@ -58,6 +60,9 @@ public class link {
                         this.startingNode = startingNode;
                         this.endingNode = endingNode;
                         this.weight = weight;
+                    }
+    public link(){
+
                     }
 
 }

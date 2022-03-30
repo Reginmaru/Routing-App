@@ -3,12 +3,14 @@ package com.example.RoutingApp.routeXML;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import com.example.RoutingApp.link.*;
 import com.example.RoutingApp.node.*;
 
 @Entity
 @Table
+@XmlRootElement
 public class routeXML {
     @Id
     @SequenceGenerator(
@@ -39,5 +41,9 @@ public class routeXML {
     }
     public void setLinks(List<link> links) {
          this.links = links;
+    }
+    @Override
+    public String toString(){
+        return "nodes" + nodes;
     }
 }

@@ -1,0 +1,94 @@
+<routeXML>
+	<nodes>
+		<node name="A">
+			<x>1</x>
+			<y>7</y>
+		</node>
+		<node name="B">
+			<x>4</x>
+			<y>9</y>
+		</node>
+		<node name="C">
+			<x>3</x>
+			<y>5</y>
+		</node>
+		<node name="D">
+			<x>2</x>
+			<y>1</y>
+		</node>
+		<node name="E">
+			<x>6</x>
+			<y>6</y>
+		</node>
+		<node name="F">
+			<x>10</x>
+			<y>9</y>
+		</node>
+		<node name="G">
+			<x>7</x>
+			<y>2</y>
+		</node>
+		<node name="H">
+			<x>11</x>
+			<y>5</y>
+		</node>
+		<node name="I">
+			<x>11</x>
+			<y>3</y>
+		</node>
+		<node name="J">
+			<x>14</x>
+			<y>1</y>
+		</node>
+	</nodes>
+	<links>
+		<link startingNode="A" endingNode="B">
+			<weight>3</weight>
+		</link>
+		<link startingNode="A" endingNode="C">
+			<weight>2</weight>
+		</link>
+		<link startingNode="B" endingNode="F">
+			<weight>6</weight>
+		</link>
+		<link startingNode="B" endingNode="E">
+			<weight>2</weight>
+		</link>
+		<link startingNode="C" endingNode="D">
+			<weight>2</weight>
+		</link>
+		<link startingNode="C" endingNode="E">
+			<weight>3</weight>
+		</link>
+		<link startingNode="C" endingNode="G">
+			<weight>4</weight>
+		</link>
+		<link startingNode="D" endingNode="E">
+			<weight>5</weight>
+		</link>
+		<link startingNode="E" endingNode="F">
+			<weight>4</weight>
+		</link>
+		<link startingNode="E" endingNode="G">
+			<weight>4</weight>
+		</link>
+		<link startingNode="F" endingNode="H">
+			<weight>4</weight>
+		</link>
+		<link startingNode="F" endingNode="J">
+			<weight>9</weight>
+		</link>
+		<link startingNode="G" endingNode="H">
+			<weight>5</weight>
+		</link>
+		<link startingNode="G" endingNode="I">
+			<weight>3</weight>
+		</link>
+		<link startingNode="H" endingNode="I">
+			<weight>1</weight>
+		</link>
+		<link startingNode="I" endingNodeingNode="J">
+			<weight>3</weight>
+		</link>
+	</links>
+</routeXML>

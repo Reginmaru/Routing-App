@@ -11,6 +11,7 @@ import java.util.*;
 @RequestMapping( path = "api/v1/nodes")
 public class nodeController {
 
+    @Autowired
     private final nodeService nodeservice;
 
     @Autowired
