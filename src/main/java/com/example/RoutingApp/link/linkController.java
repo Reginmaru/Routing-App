@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.*;
 
 
-@RestController
 
+@RestController
 public class linkController {
 
     @Autowired
@@ -18,16 +18,22 @@ public class linkController {
     linkController(linkService linkservice){
         this.linkservice = linkservice;
     }
-    @RequestMapping( path = "api/startingNodes")
+    @RequestMapping( path = "api/links/startingNodes")
     @GetMapping
     public Collection<String> getStartingNodes(){
         return linkservice.getStartingNodes();
     }
-    @RequestMapping( path = "api/endingNodes")
+    @RequestMapping( path = "api/links/endingNodes")
     @GetMapping
     public Collection<String> getEndingNodes(){
         return linkservice.getEndingNodes();
     }
+    @RequestMapping( path = "api/links")
+    @GetMapping
+    public List<link> getAllLinks(){
+        return linkservice.getAllLinks();
+    }
+
 
     
 }

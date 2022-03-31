@@ -1,31 +1,48 @@
 package com.example.RoutingApp.chain;
+
 import com.example.RoutingApp.link.*;
-
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
-
-
+import com.example.RoutingApp.node.*;
 import java.util.List;
 
-@RestController
-public class chain {
-    @Autowired
-    private linkRepository linkrepository;
+import javax.persistence.*;
 
-    private  List<List<link>> allPossibleChains;
-    private List<link> allLinks;
-    public static void main(String [] args){
-        chain chain1 = new chain();
-        
-     }
-    public void setAllLinks(){
-         this.allLinks = linkrepository.findAll();
+
+@Entity
+@Table
+public class chain {
+    @Id
+    @SequenceGenerator(
+        name = "chain_sequence",
+        sequenceName = "chain_sequence",
+        allocationSize = 1
+    )
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE,
+        generator = "chain_sequence"
+    )
+    private Long id;
+    @ManyToMany
+    private List<link> chainListLinks;
+
+    public Long getId() {
+        return id;
     }
-    public void addLinksToChain(){
-        for (int i = 0; i < linkrepository.findAll().size(); i ++){
-            
-            //allPossibleChains.get(i).add()
-        }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public List<link> getChainListLinks() {
+        return chainListLinks;
+    }
+    public void setChainListLinks(List<link> chainListLinks) {
+        this.chainListLinks = chainListLinks;
+    }
+    public chain(Long id, List<link> chainListLinks){
+        this.id = id;
+        this.chainListLinks = chainListLinks;
+    }
+    public chain(List<link> chainListLinks){
+        this.chainListLinks = chainListLinks;
+    }
+    public chain(){
     }
 }

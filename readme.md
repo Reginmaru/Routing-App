@@ -19,3 +19,7 @@ v0.03
 
 1. I have to connect to postgres so i can chang my chain code so i can access the link directly from database. Lesson, create base classes, then database then algorithm.
 2. Successfully linked my base classes as well as my routeXML to my database, however I have not changed response to be in XML format. Also I need it to read XML too.
+
+-----------------------------------
+
+THe goal is to create a program that takes in "locations and distances" and calculate the quickest route between them.

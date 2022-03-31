@@ -24,7 +24,7 @@ public class node {
     )
 
     private Long id;
-    private String name;
+    private String link_name;
     private Double x;
     private Double y;
 
@@ -32,7 +32,7 @@ public class node {
         return id;
     }
     public String getName() {
-        return name;
+        return link_name;
     }
     public Double getX() {
         return x;
@@ -43,8 +43,8 @@ public class node {
     public void setId(Long id) {
         this.id = id;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String link_name) {
+        this.link_name = link_name;
     }
     public void setX(Double x) {
         this.x = x;
@@ -52,27 +52,22 @@ public class node {
     public void setY(Double y) {
         this.y = y;
     }
-    public node( String name,
+    public node( String link_name,
                     Double x,
                     Double y){
-                        this.name = name;
+                        this.link_name = link_name;
                         this.x = x;
                         this.y = y;
                     }
     public node(    Long id,
-                    String name,
+                    String link_name,
                     Double x,
                     Double y){
                         this.id = id;
-                        this.name = name;
+                        this.link_name = link_name;
                         this.x = x;
                         this.y = y;
                     }
     public node(){
-
-    }
-    @Override
-    public String toString(){
-        return "name" + getName();
     }
 }

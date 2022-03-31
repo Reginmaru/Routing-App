@@ -87,7 +87,7 @@
 		<link startingNode="H" endingNode="I">
 			<weight>1</weight>
 		</link>
-		<link startingNode="I" endingNodeingNode="J">
+		<link startingNode="I" endingNode="J">
 			<weight>3</weight>
 		</link>
 	</links>

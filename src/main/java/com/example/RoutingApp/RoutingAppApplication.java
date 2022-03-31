@@ -11,12 +11,17 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collection;
 
+
+import com.example.RoutingApp.chain.chain;
+import com.example.RoutingApp.chain.chainRepository;
 import com.example.RoutingApp.link.link;
 import com.example.RoutingApp.node.*;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.example.RoutingApp.link.linkRepository;
-import com.example.RoutingApp.routeXML.routeXML;
 
 import org.springframework.boot.ApplicationRunner;
 
@@ -24,22 +29,18 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RestController;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import javax.xml.XMLConstants;
 
 
 @SpringBootApplication
 @RestController
 public class RoutingAppApplication {
-
-	private static final Logger log = LoggerFactory.getLogger(RoutingAppApplication.class);
 	public static void main(String[] args) {
 		SpringApplication.run(RoutingAppApplication.class, args);
 	}
 
 	@Bean
-	ApplicationRunner init (nodeRepository noderepository, linkRepository linkrepository){
+	ApplicationRunner init (nodeRepository noderepository, linkRepository linkrepository, chainRepository chainrepository){
 		return args -> {
 			final String FILENAME = "graph.xml";
 			
@@ -55,21 +56,52 @@ public class RoutingAppApplication {
          	System.out.println("------");
 
 			NodeList listOfNodes = doc.getElementsByTagName("node");
+			NodeList listOfLinks = doc.getElementsByTagName("link");
 
 			for ( int i = 0; i < listOfNodes.getLength(); i++){
 				Node n = listOfNodes.item(i);
 				if ( n.getNodeType() == Node.ELEMENT_NODE) {
-					Element element = (Element) n;
+					Element elementn = (Element) n;
 
-					String nameNode = element.getAttribute("name");
-					String x = element.getElementsByTagName("x").item(0).getTextContent();
-					String y = element.getElementsByTagName("y").item(0).getTextContent();
-					System.out.println(nameNode);
-					System.out.println(x);
-					System.out.println(y);
+					String nameNode = elementn.getAttribute("name");
+					String x = elementn.getElementsByTagName("x").item(0).getTextContent();
+					String y = elementn.getElementsByTagName("y").item(0).getTextContent();
 					noderepository.save(new node(nameNode, Double.parseDouble(x), Double.parseDouble(y)));
 				}
+			}
+			for ( int i = 0; i< listOfLinks.getLength(); i ++){
+				Node l = listOfLinks.item(i);
+				if ( l.getNodeType() == Node.ELEMENT_NODE) {
+					Element elementl = (Element) l;
 
+					String startingNode = elementl.getAttribute("startingNode");
+					String endingNode = elementl.getAttribute("endingNode");
+					String weight = elementl.getElementsByTagName("weight").item(0).getTextContent();
+					linkrepository.save(new link(startingNode, endingNode, Double.parseDouble(weight)));
+				}
+			}
+			List<link> allLinks = linkrepository.findAll();
+			Collection<String> allStartingNodes = linkrepository.findAllStartingNodes();
+			Collection<String> allEndingNodes = linkrepository.findAllEndingNodes();
+			Collection<String> allIds = linkrepository.findAllIds();
+
+			for ( int i = 0; i< allLinks.size(); i++){
+				List<link> t = new ArrayList<link>();
+					for ( int j = 0; j< allLinks.size(); j++){
+						if (allStartingNodes.toArray()[i].equals( allEndingNodes.toArray()[j]) ||
+						allEndingNodes.toArray()[i].equals(allStartingNodes.toArray()[j]) ||
+						allEndingNodes.toArray()[i].equals(allEndingNodes.toArray()[j]) ||
+						allStartingNodes.toArray()[i].equals(allStartingNodes.toArray()[j])){
+							if(!t.contains(allLinks.get(i))){
+								t.add(allLinks.get(i));
+							}
+							if(!t.contains(allLinks.get(j))){
+								t.add(allLinks.get(j));
+							}
+						}
+					}
+
+				chainrepository.save(new chain(t));
 			}
 		}catch(ParserConfigurationException | SAXException | IOException e){
 			e.printStackTrace();

@@ -4,7 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import java.util.*;
 
-
 public interface linkRepository 
         extends JpaRepository<link, Long>{
 
@@ -13,6 +12,9 @@ public interface linkRepository
 
                 @Query("SELECT i.endingNode FROM link i")
                 Collection<String> findAllEndingNodes();
+
+                @Query("SELECT i.id FROM link i")
+                Collection<String> findAllIds();
 
                 
     

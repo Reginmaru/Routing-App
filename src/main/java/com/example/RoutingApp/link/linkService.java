@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 public class linkService {
 
     private linkRepository linkrepository;
-    private List<List<link>> allPossibleChains;
-    private List<link> oneLink;
 
     @Autowired
     public linkService(linkRepository linkrepository) {
@@ -22,5 +20,8 @@ public class linkService {
     }
     public Collection<String> getEndingNodes(){        
         return linkrepository.findAllEndingNodes();
+    }
+    public List<link> getAllLinks(){
+        return linkrepository.findAll();
     }
 }

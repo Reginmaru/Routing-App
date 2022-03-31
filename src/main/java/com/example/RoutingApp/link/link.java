@@ -62,7 +62,5 @@ public class link {
                         this.weight = weight;
                     }
     public link(){
-
-                    }
-
+    }
 }
