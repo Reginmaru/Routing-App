@@ -63,4 +63,8 @@ public class link {
                     }
     public link(){
     }
+    // @Override
+    // public String toString(){
+    //     return startingNode + endingNode;
+    // }
 }

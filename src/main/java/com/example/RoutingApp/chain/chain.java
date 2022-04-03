@@ -1,7 +1,6 @@
 package com.example.RoutingApp.chain;
 
 import com.example.RoutingApp.link.*;
-import com.example.RoutingApp.node.*;
 import java.util.List;
 
 import javax.persistence.*;
