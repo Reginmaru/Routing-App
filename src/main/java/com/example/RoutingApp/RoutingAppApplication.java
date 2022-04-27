@@ -87,26 +87,31 @@ public class RoutingAppApplication {
 				sortingLinksInOrder.add(l.getStartingNode() + l.getEndingNode());
 			});
 			System.out.println(sortingLinksInOrder);
+			chainrepository.save(new chain("A","E")); 
 			//Create new List of Lists of starting and ending nodes.
-			List<List<String>> sortingIntoChains = new ArrayList<List<String>>();
-			for( int i = 0 ; i < sortingLinksInOrder.size(); i ++ ){
-				//Create a tempList for saving chains into big chain
-				List<String> t = new ArrayList<String>();
-					for ( int j = 0 ; j < sortingLinksInOrder.size(); j ++){
-						//This adds all the ones with matching starting nodes but i have to continue until chain is full as well as delete duplicates
-					if ( !t.contains(sortingLinksInOrder.get(i))){
-						t.add(sortingLinksInOrder.get(i));
-					}
-					if(i != j && sortingLinksInOrder.get(i).charAt(0) == sortingLinksInOrder.get(j).charAt(0)){
-						
-						t.add(sortingLinksInOrder.get(j));
-					}
+			// List<List<String>> sortingIntoChains = new ArrayList<List<String>>();
+			// for( int i = 0 ; i < sortingLinksInOrder.size(); i ++ ){
+			// 	//Create a tempList for saving chains into big chain
+			// 	List<String> t = new ArrayList<String>();
+			// 		t.add(sortingLinksInOrder.get(i));
+			// 		for ( int j = 0 ; j < sortingLinksInOrder.size(); j ++){
+			// 			//This adds all the ones with matching starting nodes but i have to continue until chain is full as well as delete duplicates
+			// 		//Adds next adjecent.
+			// 		if(i != j && sortingLinksInOrder.get(i).charAt(1) == sortingLinksInOrder.get(j).charAt(0)){
+			// 			// if(!t.contains(sortingLinksInOrder.get(j))){
+			// 				t.add(sortingLinksInOrder.get(j));
+			// 			//}
+			// 		}
 					
-				}
-				sortingIntoChains.add(t);
+											
+			// 		//Now to delete duplicates.
+					
+			// 	}
+			// 	// I want to have 1 element then compare to all others then add then compare
+			// 	sortingIntoChains.add(t);
 
-			}
-			System.out.println(sortingIntoChains);
+			// }
+			// System.out.println(sortingIntoChains);
 
 
 

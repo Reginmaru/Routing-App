@@ -24,4 +24,13 @@ public class linkService {
     public List<link> getAllLinks(){
         return linkrepository.findAll();
     }
+    public List<String> getAllStartAndEnd(){
+        List<link> allLinks = linkrepository.findAll();
+
+			List<String> sortingLinksInOrder = new ArrayList<String>();
+			allLinks.forEach((l) -> {
+				sortingLinksInOrder.add(l.getStartingNode() + l.getEndingNode());
+			});
+        return sortingLinksInOrder;
+    }
 }

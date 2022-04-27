@@ -1,8 +1,4 @@
 package com.example.RoutingApp.chain;
-
-import com.example.RoutingApp.link.*;
-import java.util.List;
-
 import javax.persistence.*;
 
 
@@ -20,27 +16,41 @@ public class chain {
         generator = "chain_sequence"
     )
     private Long id;
-    @ManyToMany
-    private List<link> chainListLinks;
-
+    private String startingPosition;
+    private String endingPosition;
+    private Double weight;
     public Long getId() {
         return id;
     }
     public void setId(Long id) {
         this.id = id;
     }
-    public List<link> getChainListLinks() {
-        return chainListLinks;
+    public String getStartingPosition() {
+        return startingPosition;
     }
-    public void setChainListLinks(List<link> chainListLinks) {
-        this.chainListLinks = chainListLinks;
+    public void setStartingPosition(String startingPosition) {
+        this.startingPosition = startingPosition;
     }
-    public chain(Long id, List<link> chainListLinks){
+    public String getEndingPosition() {
+        return endingPosition;
+    }
+    public void setEndingPosition(String endingPosition) {
+        this.endingPosition = endingPosition;
+    }
+    public Double getWeight() {
+        return weight;
+    }
+    public void setWeight(Double weight) {
+        this.weight = weight;
+    }
+    public chain(Long id,String startingPosition,String endingPosition){
         this.id = id;
-        this.chainListLinks = chainListLinks;
+        this.startingPosition = startingPosition;
+        this.endingPosition = endingPosition;
     }
-    public chain(List<link> chainListLinks){
-        this.chainListLinks = chainListLinks;
+    public chain(String startingPosition,String endingPosition){
+        this.startingPosition = startingPosition;
+        this.endingPosition = endingPosition;
     }
     public chain(){
     }

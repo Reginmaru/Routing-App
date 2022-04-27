@@ -33,6 +33,11 @@ public class linkController {
     public List<link> getAllLinks(){
         return linkservice.getAllLinks();
     }
+    @RequestMapping( path = "api/startEnd")
+    @GetMapping
+    public List<String> getStartAndEnd(){
+        return linkservice.getAllStartAndEnd();
+    }
 
 
     
