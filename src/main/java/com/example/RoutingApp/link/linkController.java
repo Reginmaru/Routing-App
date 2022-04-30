@@ -41,9 +41,8 @@ public class linkController {
         return linkservice.getAllStartAndEnd();
     }
     @GetMapping( path = "")
-    public ModelAndView showAllLinks(){
-        ModelAndView model = new ModelAndView();
-        model.setViewName("links");
+    public ModelAndView GraphOfLinks(){
+        ModelAndView model = new ModelAndView("nodes","links",linkservice.graphOfLinks());
         return model;
     }
 
