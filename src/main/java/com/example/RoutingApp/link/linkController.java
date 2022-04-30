@@ -2,7 +2,9 @@ package com.example.RoutingApp.link;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import java.util.*;
 
@@ -28,7 +30,7 @@ public class linkController {
     public Collection<String> getEndingNodes(){
         return linkservice.getEndingNodes();
     }
-    @RequestMapping( path = "api/links")
+    @RequestMapping( path = "link")
     @GetMapping
     public List<link> getAllLinks(){
         return linkservice.getAllLinks();
@@ -38,6 +40,13 @@ public class linkController {
     public List<String> getStartAndEnd(){
         return linkservice.getAllStartAndEnd();
     }
+    @GetMapping( path = "")
+    public ModelAndView showAllLinks(){
+        ModelAndView model = new ModelAndView();
+        model.setViewName("links");
+        return model;
+    }
+
 
 
     

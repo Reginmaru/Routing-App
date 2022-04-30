@@ -24,6 +24,8 @@ import org.springframework.boot.ApplicationRunner;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RestController;
 import javax.xml.XMLConstants;
@@ -32,6 +34,10 @@ import javax.xml.XMLConstants;
 @SpringBootApplication
 @RestController
 public class RoutingAppApplication {
+	// @Override
+    // protected SpringApplicationBuilder configure(SpringApplicationBuilder builder){
+	// 	return builder.sources(RoutingAppApplication.class);
+	// }
 	public static void main(String[] args) {
 		SpringApplication.run(RoutingAppApplication.class, args);
 	}
@@ -86,7 +92,6 @@ public class RoutingAppApplication {
 			allLinks.forEach((l) -> {
 				sortingLinksInOrder.add(l.getStartingNode() + l.getEndingNode());
 			});
-			System.out.println(sortingLinksInOrder);
 			chainrepository.save(new chain("A","E")); 
 		
 		}catch(ParserConfigurationException | SAXException | IOException e){
