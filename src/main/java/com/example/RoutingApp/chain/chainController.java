@@ -2,13 +2,19 @@ package com.example.RoutingApp.chain;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import java.util.Collection;
 import java.util.List;
-
+import org.json.simple.*;
 
 @RestController
+@RequestMapping( path = "")
 public class chainController {
 
     @Autowired
@@ -53,5 +59,20 @@ public class chainController {
         c =(chain) chainservice.getAllChains().toArray()[0];
 
         return chainservice.calculateWeightsForChains(c);
+    }
+    @RequestMapping( path = "linksAndLinks")
+    @GetMapping
+    public String bothNodesAndLinks(){
+        return chainservice.bothNodesAndLinks();
+    }
+    @GetMapping( path = "graph")
+    public ModelAndView graph(){
+        ModelAndView model = new ModelAndView("nodes","chain",chainservice.bothNodesAndLinks());
+        return model;
+    }
+    @RequestMapping( path = "g")
+    @GetMapping
+    public String g(){
+        return chainservice.bothNodesAndLinks();
     }
 }

@@ -33,12 +33,9 @@ public class linkService {
 			});
         return sortingLinksInOrder;
     }
-    public String graphOfLinks(){
-        List<Map<Object,Object>> list = new ArrayList<Map<Object,Object>>();
-		Map<Object,Object> mapOfLinks = null;
+    // public String graphOfLinks(){
+    //     List<Map<Object,Object>> list = new ArrayList<Map<Object,Object>>();
+	// 	Map<Object,Object> mapOfLinks = null;
 
-        for( int i = 0 ; i<getAllLinks(); i++){
-            mapOfLinks.put("x",getAllLinks().get(i).get)
-        }
-    }
+    // }
 }

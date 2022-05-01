@@ -4,6 +4,13 @@ import java.util.*;
 import com.example.RoutingApp.link.link;
 import com.example.RoutingApp.link.linkService;
 import com.example.RoutingApp.node.nodeService;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
+
+import org.json.simple.*;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -131,6 +138,21 @@ public class chainService {
             weights.add(weight);
         }
         return weights;
+    }
+    public String bothNodesAndLinks(){
+        String json = new Gson().toJson(nodeservice.getNodes());
+        String json2 = new Gson().toJson(linkservice.getAllLinks());
+
+        String nodesAndLinks = "{\"nodes\":" + json + ", \"links\":" + json2 + "}"; 
+        return nodesAndLinks;
+    }
+    public List<String> createChain(String startingNode, String endingNode){
+        // chainrepository.deleteAll();
+        chainrepository.save(new chain(startingNode,endingNode));
+        List<String> startAndEnd = new ArrayList<String>();
+        startAndEnd.add(startingNode);
+        startAndEnd.add(endingNode);
+        return startAndEnd;
     }
 
 }

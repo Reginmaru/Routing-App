@@ -40,11 +40,11 @@ public class linkController {
     public List<String> getStartAndEnd(){
         return linkservice.getAllStartAndEnd();
     }
-    @GetMapping( path = "")
-    public ModelAndView GraphOfLinks(){
-        ModelAndView model = new ModelAndView("nodes","links",linkservice.graphOfLinks());
-        return model;
-    }
+    // @GetMapping( path = "")
+    // public ModelAndView GraphOfLinks(){
+    //     ModelAndView model = new ModelAndView("nodes","links",linkservice.graphOfLinks());
+    //     return model;
+    // }
 
 
 

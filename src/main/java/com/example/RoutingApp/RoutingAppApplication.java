@@ -92,7 +92,7 @@ public class RoutingAppApplication {
 			allLinks.forEach((l) -> {
 				sortingLinksInOrder.add(l.getStartingNode() + l.getEndingNode());
 			});
-			chainrepository.save(new chain("A","E")); 
+			 
 		
 		}catch(ParserConfigurationException | SAXException | IOException e){
 			e.printStackTrace();
