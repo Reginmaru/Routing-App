@@ -13,8 +13,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-
-import com.example.RoutingApp.chain.chain;
 import com.example.RoutingApp.chain.chainRepository;
 import com.example.RoutingApp.link.link;
 import com.example.RoutingApp.node.*;
@@ -24,8 +22,6 @@ import org.springframework.boot.ApplicationRunner;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RestController;
 import javax.xml.XMLConstants;
@@ -84,8 +80,6 @@ public class RoutingAppApplication {
 					linkrepository.save(new link(startingNode, endingNode, Double.parseDouble(weight)));
 				}
 			}
-//go through all the links.tostring() order then in alphabetical, then foreach add() link (in alphabetical order) if a link has either a starting node or ending node the same as all the other ones in the list.
-	//1. Ordered, I noticed I have more than one of the same so when I create loop I have to add them first and delete duplicate.		
 			List<link> allLinks = linkrepository.findAll();
 
 			List<String> sortingLinksInOrder = new ArrayList<String>();

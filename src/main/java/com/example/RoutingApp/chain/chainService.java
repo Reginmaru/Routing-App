@@ -146,7 +146,7 @@ public class chainService {
         String nodesAndLinks = "{\"nodes\":" + json + ", \"links\":" + json2 + "}"; 
         return nodesAndLinks;
     }
-    public List<String> createChain(String startingNode, String endingNode){
+    public List<String> createChainWithNodes(String startingNode, String endingNode){
         // chainrepository.deleteAll();
         chainrepository.save(new chain(startingNode,endingNode));
         List<String> startAndEnd = new ArrayList<String>();
@@ -154,5 +154,16 @@ public class chainService {
         startAndEnd.add(endingNode);
         return startAndEnd;
     }
+    public String createChainWithChain(chain c){
+        // chainrepository.deleteAll();
+        chainrepository.save(c);
+        return "Created";
+    }
 
 }
+// <%  String node1=request.getParameter("node1");
+//                 String node2=request.getParameter("node2");
+//                 Object data = (String)request.getAttribute("chain");
+//                 System.out.println(data);
+                
+//             %>
