@@ -11,7 +11,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
 
 import com.example.RoutingApp.chain.chainRepository;
 import com.example.RoutingApp.link.link;
@@ -31,6 +30,7 @@ import javax.xml.XMLConstants;
 @RestController
 public class RoutingAppApplication {
 	
+	//Run by using mvn spring-boot:run
 	public static void main(String[] args) {
 		SpringApplication.run(RoutingAppApplication.class, args);
 	}

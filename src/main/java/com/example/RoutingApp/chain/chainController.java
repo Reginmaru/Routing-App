@@ -67,9 +67,9 @@ public class chainController {
     }
 
     //This is the model used with the information of all the nodes and links to create the network graph.
-    @GetMapping( path = "graph")
+    @GetMapping( path = "")
     public ModelAndView graph(){
-        ModelAndView model = new ModelAndView("nodes","chain",chainservice.bothNodesAndLinks());
+        ModelAndView model = new ModelAndView("html","chain",chainservice.bothNodesAndLinks());
         return model;
     }
 }
