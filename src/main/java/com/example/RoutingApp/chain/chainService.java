@@ -5,12 +5,7 @@ import com.example.RoutingApp.link.link;
 import com.example.RoutingApp.link.linkService;
 import com.example.RoutingApp.node.nodeService;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
-
-import org.json.simple.*;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -161,9 +156,3 @@ public class chainService {
     }
 
 }
-// <%  String node1=request.getParameter("node1");
-//                 String node2=request.getParameter("node2");
-//                 Object data = (String)request.getAttribute("chain");
-//                 System.out.println(data);
-                
-//             %>

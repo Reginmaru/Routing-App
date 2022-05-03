@@ -30,20 +30,17 @@ import javax.xml.XMLConstants;
 @SpringBootApplication
 @RestController
 public class RoutingAppApplication {
-	// @Override
-    // protected SpringApplicationBuilder configure(SpringApplicationBuilder builder){
-	// 	return builder.sources(RoutingAppApplication.class);
-	// }
+	
 	public static void main(String[] args) {
 		SpringApplication.run(RoutingAppApplication.class, args);
 	}
-
+	//Reading the XML file and attaching elements to database.
 	@Bean
 	ApplicationRunner init (nodeRepository noderepository, linkRepository linkrepository, chainRepository chainrepository){
 		return args -> {
+			//Name of XML file
 			final String FILENAME = "graph.xml";
-			
-
+			//Building document
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			try{
 			dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
@@ -51,13 +48,12 @@ public class RoutingAppApplication {
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			Document doc = db.parse(new File(FILENAME));
 			doc.getDocumentElement().normalize();
-			System.out.println("Root Element :" + doc.getDocumentElement().getNodeName());
-         	System.out.println("------");
-
+				
+			//Grabbing nodes and links so I can put them in postgres DB.
 			NodeList listOfNodes = doc.getElementsByTagName("node");
 			NodeList listOfLinks = doc.getElementsByTagName("link");
 			
-
+			//Save all nodes to repository.
 			for ( int i = 0; i < listOfNodes.getLength(); i++){
 				Node n = listOfNodes.item(i);
 				if ( n.getNodeType() == Node.ELEMENT_NODE) {
@@ -69,6 +65,7 @@ public class RoutingAppApplication {
 					noderepository.save(new node(nameNode, Double.parseDouble(x), Double.parseDouble(y)));
 				}
 			}
+			//Save all links to repository.
 			for ( int i = 0; i< listOfLinks.getLength(); i ++){
 				Node l = listOfLinks.item(i);
 				if ( l.getNodeType() == Node.ELEMENT_NODE) {
@@ -80,14 +77,7 @@ public class RoutingAppApplication {
 					linkrepository.save(new link(startingNode, endingNode, Double.parseDouble(weight)));
 				}
 			}
-			List<link> allLinks = linkrepository.findAll();
-
-			List<String> sortingLinksInOrder = new ArrayList<String>();
-			allLinks.forEach((l) -> {
-				sortingLinksInOrder.add(l.getStartingNode() + l.getEndingNode());
-			});
-			 
-		
+		//catching incase of errors.
 		}catch(ParserConfigurationException | SAXException | IOException e){
 			e.printStackTrace();
 		}

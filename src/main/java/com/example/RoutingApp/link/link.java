@@ -2,10 +2,10 @@ package com.example.RoutingApp.link;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
-
+//Needed to attach to postgres
 @Entity
 @Table
-@XmlRootElement
+@XmlRootElement // Needed to identify XML part.
 public class link {
     @Id
     @SequenceGenerator(
@@ -63,8 +63,4 @@ public class link {
                     }
     public link(){
     }
-    // @Override
-    // public String toString(){
-    //     return startingNode + endingNode;
-    // }
 }

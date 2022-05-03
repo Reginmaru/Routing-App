@@ -7,10 +7,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.persistence.GeneratedValue;
-
+//Attaching to postgres.
 @Entity
 @Table
-@XmlRootElement
+@XmlRootElement //Associating to XML elements.
 public class node {
     @Id
     @SequenceGenerator(

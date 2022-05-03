@@ -8,18 +8,20 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class nodeService {
-
+	//Attaching to repository
 	private nodeRepository noderepository;
 
 	@Autowired
 	public nodeService(nodeRepository noderepository) {
 		this.noderepository = noderepository;
 	}
-
+	
+	//Fetches all nodes
     public List<node> getNodes() {	
 		return noderepository.findAll();
 	}
-	
+
+	//Fetches all nodes in a json string
 	public String graphOfNodes(){
 		List<Map<Object,Object>> list = new ArrayList<Map<Object,Object>>();
 		Map<Object,Object> mapOfNodes = null;

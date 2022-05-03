@@ -2,9 +2,7 @@ package com.example.RoutingApp.link;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import java.util.*;
 
@@ -12,7 +10,7 @@ import java.util.*;
 
 @RestController
 public class linkController {
-
+    //Attaching controller to service.
     @Autowired
     private final linkService linkservice;
 
@@ -20,33 +18,32 @@ public class linkController {
     linkController(linkService linkservice){
         this.linkservice = linkservice;
     }
+
+    //Getting all startingNodes
     @RequestMapping( path = "api/links/startingNodes")
     @GetMapping
     public Collection<String> getStartingNodes(){
         return linkservice.getStartingNodes();
     }
+
+    //Getting all endingNodes
     @RequestMapping( path = "api/links/endingNodes")
     @GetMapping
     public Collection<String> getEndingNodes(){
         return linkservice.getEndingNodes();
     }
-    @RequestMapping( path = "link")
+
+    //Getting all links
+    @RequestMapping( path = "api/links")
     @GetMapping
     public List<link> getAllLinks(){
         return linkservice.getAllLinks();
     }
+    
+    //Getting all links with just starting and endingnodes list.
     @RequestMapping( path = "api/startEnd")
     @GetMapping
     public List<String> getStartAndEnd(){
         return linkservice.getAllStartAndEnd();
-    }
-    // @GetMapping( path = "")
-    // public ModelAndView GraphOfLinks(){
-    //     ModelAndView model = new ModelAndView("nodes","links",linkservice.graphOfLinks());
-    //     return model;
-    // }
-
-
-
-    
+    }  
 }

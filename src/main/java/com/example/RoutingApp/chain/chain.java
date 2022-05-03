@@ -1,7 +1,7 @@
 package com.example.RoutingApp.chain;
 import javax.persistence.*;
 
-
+//Attaching Class to a table in postgres
 @Entity
 @Table
 public class chain {

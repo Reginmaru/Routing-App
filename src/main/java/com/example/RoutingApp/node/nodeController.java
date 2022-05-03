@@ -11,7 +11,7 @@ import java.util.*;
 @RestController
 @RequestMapping( path = "")
 public class nodeController {
-
+    //Attaching to service
     @Autowired
     private final nodeService nodeservice;
 
@@ -19,16 +19,22 @@ public class nodeController {
     nodeController(nodeService nodeservice){
         this.nodeservice = nodeservice;
     }
+
+    //Getting all nodes.
     @RequestMapping( path = "nodes")
     @GetMapping
 	public List<node> getNodes() {
         return nodeservice.getNodes();
 	}
+
+    //Creating a model for nodes (not used in graph but not removed to display.)
     @GetMapping( path = "nodesGraph")
     public ModelAndView graphOfNodes(){
         ModelAndView model = new ModelAndView("nodes", "list", nodeservice.graphOfNodes());
         return model;
     }
+    
+    //getting all nodes in a string Gson format so Graph can read. ( not used )
     @RequestMapping( path = "listOfNodes")
     @GetMapping
     public String listOfNodes(){
