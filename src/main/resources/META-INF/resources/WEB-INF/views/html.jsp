@@ -49,6 +49,7 @@
 <html xmlns:th="https://www.thymeleaf.org">
     <body>
         <%-- Components of Page --%>
+        <button type="button" onClick="window.location.reload();">RESET</button>
         <div id = "scalesvg">Click 2 Nodes to calculate Fastest Route
         </div>
         <div class="svg-container" id = "scalesvg">
@@ -231,6 +232,7 @@
                             all.push(one);
                         }
                     }
+                    
                     //Adds more links to starting links.
                     for ( let k = 0 ; k< all.length; k++){
                         for (let h = 0 ; h<sortedLinks.length; h++){
@@ -262,7 +264,7 @@
                             }
                         }
                     }
-                    
+                    console.log(all);
                     //from all to possibleRoutes to second clickedNode.
                     const possibleRoutes = [];
                     for(let i = 0; i<all.length; i++){
@@ -305,14 +307,16 @@
                             }
                         }
                     }
+                    let selectedLines = [];
                     for(let i = 0; i < routeIds.length; i++){
                         link.filter(function(d, j){ // i is the index
                             return j === routeIds[i];
                         })
                         .attr("stroke","#00FF00")
+
                     }
                     //Reset
-        			clickedNodes = []
+        			clickedNodes = [];
         		}
             };
         //Stats -> creating 
